@@ -1,11 +1,3 @@
-google-generativeai
+# Initial Python dependencies
 fastapi
-uvicorn[standard]
-redis
-psycopg2-binary
-numpy
-pandas
-langchain
-crewai
-autogen
-lama-index
+uvicorn
