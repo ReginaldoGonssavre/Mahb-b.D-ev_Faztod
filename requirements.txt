@@ -1,3 +1,4 @@
-# Initial Python dependencies
-fastapi
-uvicorn
+# Add new dependencies
+requests
+beautifulsoup4
+transformers

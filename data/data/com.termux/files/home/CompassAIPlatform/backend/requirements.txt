@@ -1,0 +1,11 @@
+anyio
+certifi
+h11
+httpcore
+httpx
+idna
+sniffio
+typing_extensions
+gotrue
+postgrest-py
+python-dotenv

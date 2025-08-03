@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aigronovatech - Soluções em IA para o Agronegócio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+        :root {
+            --primary-color: #28a745; /* Verde Agronegócio */
+            --secondary-color: #007bff; /* Azul Tecnologia */
+            --dark-color: #343a40;
+            --light-color: #f8f9fa;
+            --text-color: #495057;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--white);
+            color: var(--dark-color);
+            padding: 1rem 0;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .header .nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .header .nav ul li {
+            margin-left: 30px;
+        }
+
+        .header .nav ul li a {
+            color: var(--dark-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .header .nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1500x800/28a745/ffffff?text=Campo+com+Tecnologia') no-repeat center center/cover;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 25px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #218838;
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #0056b3;
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .section:nth-of-type(even) {
+            background-color: var(--white);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .section p.lead {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+            color: var(--text-color);
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-item {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-item i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .feature-item p {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        /* About Us */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            text-align: left;
+            margin-top: 40px;
+        }
+
+        .about-content .text-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-content .image-content {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .about-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-item {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-item i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .service-item p {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        /* Testimonials */
+        .testimonials-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            gap: 20px;
+            padding-bottom: 20px;
+            margin-top: 40px;
+        }
+
+        .testimonial-item {
+            flex: 0 0 350px; /* Fixed width for each testimonial */
+            scroll-snap-align: start;
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .testimonial-item .quote {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .testimonial-item .author {
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        .testimonial-item .rating {
+            color: #ffc107; /* Star color */
+            margin-top: 10px;
+        }
+
+        /* Contact */
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .contact-form {
+            flex: 2;
+            min-width: 300px;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: var(--border-radius);
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            color: var(--text-color);
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input[type="text"]:focus,
+        .contact-form input[type="email"]:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            color: var(--text-color);
+        }
+
+        .contact-info p i {
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+            margin-top: auto; /* Pushes footer to the bottom */
+        }
+
+        .footer .social-links a {
+            color: var(--white);
+            font-size: 1.8rem;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        .footer .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer p {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header .nav {
+                display: none; /* Hide nav for mobile, implement hamburger menu if needed */
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .features-grid, .services-grid, .about-content, .contact-content {
+                grid-template-columns: 1fr;
+                flex-direction: column;
+            }
+
+            .testimonial-item {
+                flex: 0 0 90%; /* Adjust for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">Aigronovatech</a>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Recursos</a></li>
+                    <li><a href="#about">Sobre Nós</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#testimonials">Depoimentos</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Inovação em IA para o Agronegócio</h1>
+            <p>Transformando o campo com soluções inteligentes e sustentáveis para maximizar sua produtividade e rentabilidade.</p>
+            <a href="#contact" class="btn">Fale Conosco</a>
+            <a href="#services" class="btn btn-secondary">Nossos Serviços</a>
+        </div>
+    </section>
+
+    <section id="features" class="section">
+        <div class="container">
+            <h2>Recursos Principais</h2>
+            <p class="lead">Descubra como nossas soluções de inteligência artificial podem revolucionar sua produção agrícola.</p>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Monitoramento de Culturas</h3>
+                    <p>Utilize IA para monitorar a saúde das plantas, identificar pragas e doenças precocemente, e otimizar a irrigação.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-tractor"></i>
+                    <h3>Otimização de Maquinário</h3>
+                    <p>Maximize a eficiência do seu maquinário agrícola com rotas otimizadas e manutenção preditiva baseada em dados.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Análise Preditiva de Safras</h3>
+                    <p>Preveja o rendimento das safras com alta precisão, auxiliando na tomada de decisões estratégicas e comerciais.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-cloud-sun"></i>
+                    <h3>Gestão Climática Inteligente</h3>
+                    <p>Receba insights climáticos precisos e recomendações para proteger suas culturas contra eventos extremos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2>Sobre Nós</h2>
+            <p class="lead">A Aigronovatech é pioneira na aplicação de inteligência artificial para impulsionar o agronegócio.</p>
+            <div class="about-content">
+                <div class="text-content">
+                    <p>Nossa missão é capacitar produtores rurais com tecnologia de ponta, transformando dados em decisões inteligentes. Acreditamos que a inovação é a chave para um futuro agrícola mais produtivo, sustentável e rentável.</p>
+                    <p>Com uma equipe multidisciplinar de especialistas em IA, agronomia e tecnologia, desenvolvemos soluções personalizadas que atendem às necessidades específicas de cada cliente, desde pequenos produtores até grandes corporações agrícolas.</p>
+                    <a href="#contact" class="btn">Saiba Mais</a>
+                </div>
+                <div class="image-content">
+                    <img src="https://via.placeholder.com/600x400/007bff/ffffff?text=Equipe+Aigronovatech" alt="Equipe Aigronovatech">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="container">
+            <h2>Nossos Serviços</h2>
+            <p class="lead">Oferecemos um portfólio completo de serviços baseados em IA para otimizar todas as etapas da sua produção.</p>
+            <div class="services-grid">
+                <div class="service-item">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Agricultura de Precisão</h3>
+                    <p>Mapeamento detalhado de solo, aplicação de insumos variáveis e otimização de plantio para máxima eficiência.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-robot"></i>
+                    <h3>Automação Agrícola</h3>
+                    <p>Implementação de sistemas autônomos e robótica para tarefas como colheita, pulverização e monitoramento.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>Consultoria em Dados</h3>
+                    <p>Análise aprofundada de grandes volumes de dados agrícolas para identificar padrões e oportunidades de melhoria.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Desenvolvimento Personalizado</h3>
+                    <p>Criação de soluções de IA sob medida para desafios específicos do seu agronegócio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section">
+        <div class="container">
+            <h2>O Que Nossos Clientes Dizem</h2>
+            <p class="lead">Histórias de sucesso de produtores que transformaram suas operações com a Aigronovatech.</p>
+            <div class="testimonials-slider">
+                <div class="testimonial-item">
+                    <p class="quote">"A Aigronovatech revolucionou a forma como monitoramos nossas lavouras. A detecção precoce de problemas salvou nossa safra!"</p>
+                    <p class="author">- João Silva, Fazendeiro</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <p class="quote">"Com a análise preditiva, conseguimos otimizar nossa colheita e aumentar a rentabilidade em 20%. Incrível!"</p>
+                    <p class="author">- Maria Oliveira, Gerente Agrícola</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <p class="quote">"O suporte é excelente e as soluções são realmente adaptadas às nossas necessidades. Recomendo a todos os produtores."</p>
+                    <p class="author">- Carlos Souza, Cooperativa Agrícola</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+            <p class="lead">Estamos prontos para ajudar você a levar sua produção agrícola para o próximo nível.</p>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <h3>Envie-nos uma Mensagem</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nome:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Assunto:</label>
+                            <input type="text" id="subject" name="subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem:</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3>Nossas Informações</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Rua da Inovação, 123, Cidade Agrícola, Brasil</p>
+                    <p><i class="fas fa-phone"></i> +55 (11) 98765-4321</p>
+                    <p><i class="fas fa-envelope"></i> contato@aigronovatech.com</p>
+                    <p><i class="fas fa-clock"></i> Seg - Sex: 9h - 18h</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2025 Aigronovatech. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

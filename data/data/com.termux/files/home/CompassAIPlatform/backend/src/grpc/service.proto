@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package your_package; // Replace with your desired package name
+
+service YourService {
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc GetFeature (FeatureRequest) returns (Feature) {}
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
+
+message FeatureRequest {
+  int32 id = 1;
+}
+
+message Feature {
+  string name = 1;
+  Point location = 2;
+}
+
+message Point {
+  int32 latitude = 1;
+  int32 longitude = 2;
+}

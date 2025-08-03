@@ -1,0 +1,104 @@
+openapi: 3.0.0
+info:
+  title: Compass AI Platform API
+  version: 1.0.0
+  description: API documentation for the Compass AI Platform backend.
+servers:
+  - url: http://localhost:3000/api
+    description: Development server
+
+tags:
+  - name: Authentication
+    description: User authentication and authorization operations
+  - name: Protected
+    description: Protected API endpoints requiring authentication
+
+paths:
+  /auth/register:
+    post:
+      tags:
+        - Authentication
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: User's desired username
+                password:
+                  type: string
+                  description: User's desired password
+      responses:
+        '201':
+          description: User registered successfully
+        '400':
+          description: Username and password are required
+
+  /auth/login:
+    post:
+      tags:
+        - Authentication
+      summary: Authenticate user and get JWT token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: User's username
+                password:
+                  type: string
+                  description: User's password
+      responses:
+        '200':
+          description: Login successful, returns JWT token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    description: JWT authentication token
+        '401':
+          description: Invalid credentials
+
+  /protected:
+    get:
+      tags:
+        - Protected
+      summary: Get protected data
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successfully retrieved protected data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: A message indicating successful access
+                  user:
+                    type: object
+                    description: User information from the token
+        '401':
+          description: Unauthorized - no token provided or invalid token
+        '403':
+          description: Forbidden - token is valid but user does not have access
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

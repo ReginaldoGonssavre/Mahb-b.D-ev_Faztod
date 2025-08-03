@@ -1,8 +1,8 @@
 import json
 from typing import Dict, Any, Optional
 
-from gemini_integration import GeminiClient
-from agent_tools import AgentTool
+from src.cognition.gemini_integration import GeminiClient
+from src.cognition.agent_tools import AgentTool
 
 class DecisionEngine:
     def __init__(self, gemini_client: GeminiClient, tools: Dict[str, AgentTool]):
@@ -31,8 +31,8 @@ class DecisionEngine:
             tool_call = json.loads(gemini_response_text)
             # Assuming the JSON structure is {"tool_name": {"param1": "value1"}}
             # Extract tool_name and parameters dynamically
-            tool_name = next(iter(tool_call))
-            parameters = tool_call[tool_name]
+            tool_name = tool_call["tool_name"]
+            parameters = tool_call["parameters"]
 
             if tool_name in self.tools:
                 tool_obj = self.tools[tool_name]

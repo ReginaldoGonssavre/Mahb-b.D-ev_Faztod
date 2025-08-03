@@ -2,9 +2,11 @@ import os
 
 from refactored_agent import IntelligentAgent, MLComponent, NeuralAgentComponent
 from supabase_manager import SupabaseManager
-from agent_tools import AVAILABLE_TOOLS # Import available tools
+from src.cognition.agent_tools import AVAILABLE_TOOLS
+import src.cognition.rpa_tools # Import RPA tools to populate AVAILABLE_TOOLS
+import src.cognition.physical_automation_tools # Import physical automation tools to populate AVAILABLE_TOOLS
 import json # For parsing tool calls
-from decision_engine import DecisionEngine # New import
+from src.cognition.decision_engine import DecisionEngine
 from input_data import InputData # New import
 
 class MyAgent(IntelligentAgent):
@@ -51,10 +53,12 @@ class MyAgent(IntelligentAgent):
 
 if __name__ == "__main__":
     # Set environment variables for Pinecone and Gemini before running
-    # export PINECONE_API_KEY="YOUR_API_KEY"
-    # export PINECONE_ENVIRONMENT="YOUR_ENVIRONMENT"
-    # export PINECONE_INDEX_NAME="my-index"
-    # export GEMINI_API_KEY="YOUR_GEMINI_API_KEY"
+    os.environ["PINECONE_API_KEY"] = "YOUR_FICTITIOUS_PINECONE_API_KEY"
+    os.environ["PINECONE_ENVIRONMENT"] = "YOUR_FICTITIOUS_PINECONE_ENVIRONMENT"
+    os.environ["PINECONE_INDEX_NAME"] = "my-index"
+    os.environ["GEMINI_API_KEY"] = "YOUR_FICTITIOUS_GEMINI_API_KEY"
+    os.environ["SUPABASE_URL"] = "http://localhost:8000" # Fictitious but valid URL format
+    os.environ["SUPABASE_KEY"] = "YOUR_FICTITIOUS_SUPABASE_KEY"
 
     # Example of populating Pinecone index (run this once or as needed)
     # from rag_module import RAGModule
@@ -98,3 +102,54 @@ if __name__ == "__main__":
     print(f"Agent Response (Qiskit Tool): {qiskit_response}")
     if supabase_manager:
         agent.save_state_to_db()
+
+    # Simulate a request that should trigger the RPA tool
+    user_query_4 = InputData(text="Por favor, abra o portal de login e faça o login com as credenciais padrão.")
+    context_4 = agent.perceive(user_query_4)
+    print(f"\n--- Simulating Request to Trigger RPA Tool (abrir_e_logar) ---")
+    rpa_response = agent.act(f"Realizar o login no portal conforme solicitado.", rag_context=context_4)
+    print(f"Agent Response (RPA Tool): {rpa_response}")
+    if supabase_manager:
+        agent.save_state_to_db()
+
+    # --- Demonstração de Orquestração com ChiefAgent ---
+    from src.cognition.chief_agent import ChiefAgent, Task
+
+    print("\n--- Iniciando Demonstração de Orquestração com ChiefAgent ---")
+    chief_agent = ChiefAgent("chief_orchestrator", supabase_manager)
+
+    # ChiefAgent adiciona uma tarefa de RPA
+    chief_agent.add_task(
+        description="Realizar o login no portal de administração usando a ferramenta RPA.",
+        tool_name="abrir_e_logar",
+        tool_parameters={}
+    )
+
+    # ChiefAgent orquestra a tarefa
+    orchestration_result = chief_agent.act("orchestrate_tasks")
+    print(f"ChiefAgent Orchestration Result: {orchestration_result}")
+
+    # --- Simular o MyAgent (trabalhador) buscando e executando tarefas do Supabase ---
+    print("\n--- MyAgent (Worker) buscando tarefas pendentes no Supabase ---")
+    if supabase_manager:
+        worker_agent_id = "my_test_agent" # O ID do MyAgent
+        pending_tasks = supabase_manager.get_pending_tasks_for_agent(worker_agent_id)
+
+        if pending_tasks:
+            print(f"MyAgent (Worker) encontrou {len(pending_tasks)} tarefa(s) pendente(s).")
+            for task_data in pending_tasks:
+                task_from_chief = Task(**task_data)
+                print(f"MyAgent (Worker) recebendo tarefa do ChiefAgent: {task_from_chief.description}")
+
+                if task_from_chief.tool_name and task_from_chief.tool_name in AVAILABLE_TOOLS:
+                    print(f"MyAgent (Worker) executando ferramenta: {task_from_chief.tool_name} com parâmetros: {task_from_chief.tool_parameters}")
+                    tool_to_execute = AVAILABLE_TOOLS[task_from_chief.tool_name]
+                    worker_tool_result = tool_to_execute(**task_from_chief.tool_parameters)
+                    print(f"MyAgent (Worker) resultado da ferramenta: {worker_tool_result}")
+
+                    # Atualizar o status da tarefa no Supabase
+                    supabase_manager.update_task(task_from_chief.task_id, {"status": "completed", "result": worker_tool_result})
+                    print(f"MyAgent (Worker) tarefa '{task_from_chief.task_id}' marcada como concluída no Supabase.")
+                else:
+                    print(f"MyAgent (Worker): Não foi possível executar a ferramenta para a tarefa: {task_from_chief.description}")
+                    supabase_manager.update_task(task_from_chief.task_id, {"status": "failed", "result": "Ferramenta não encontrada ou inválida."})

@@ -1,0 +1,37 @@
+name: CI/CD Pipeline
+
+on: [push, pull_request]
+
+jobs:
+  backend-ci:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+    - name: Install dependencies
+      run: npm install
+      working-directory: ./backend
+    - name: Run tests (placeholder)
+      run: echo "Running backend tests..."
+      working-directory: ./backend
+
+  frontend-ci:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+    - name: Install dependencies
+      run: npm install
+      working-directory: ./frontend
+    - name: Run tests (placeholder)
+      run: echo "Running frontend tests..."
+      working-directory: ./frontend
+    - name: Build frontend
+      run: npm run build
+      working-directory: ./frontend

@@ -5,12 +5,12 @@ import numpy as np
 from collections import deque
 import random
 import os
-from rag_module import RAGModule
-from gemini_integration import GeminiClient
+from src.cognition.rag_module import RAGModule
+from src.cognition.gemini_integration import GeminiClient
 from supabase_manager import SupabaseManager
-from agent_tools import AgentTool, AVAILABLE_TOOLS # New imports
+from src.cognition.agent_tools import AgentTool, AVAILABLE_TOOLS
 from input_data import InputData # New import
-from memory_manager import MemoryManager # New import
+from src.cognition.memory_manager import MemoryManager
 
 # 1. Conceitos de "Hands-On Machine Learning" (Scikit-Learn/Keras/TensorFlow)
 class MLComponent:

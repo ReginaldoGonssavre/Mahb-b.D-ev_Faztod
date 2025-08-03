@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ../backend
+      dockerfile: ../deployment/backend.Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - JWT_SECRET=supersecretjwtkey # Replace with a strong, secret key in production
+    depends_on:
+      - postgres
+      - mongodb
+
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: ../deployment/frontend.Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  mongodb:
+    image: mongo:latest
+    volumes:
+      - mongodb_data:/data/db
+    ports:
+      - "27017:27017"
+
+volumes:
+  postgres_data:
+  mongodb_data:
