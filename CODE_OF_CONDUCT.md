@@ -1,96 +1,75 @@
-# Code of Conduct
+# CODE_OF_CONDUCT.md
 
-## Our Pledge
+# Código de Conduta do Contribuidor
 
-In the interest of fostering an open and welcoming environment, we as
-contributors and maintainers pledge to making participation in our project and
-our community a harassment-free experience for everyone, regardless of age, body
-size, disability, ethnicity, gender identity and expression, level of
-experience, education, socio-economic status, nationality, personal appearance,
-race, religion, or sexual identity and orientation.
+## Nossa Promessa
 
-## Our Standards
+No interesse de fomentar um ambiente aberto e acolhedor, nós, como contribuidores e mantenedores, comprometemo-nos a tornar a participação em nosso projeto e em nossa comunidade uma experiência livre de assédio para todos, independentemente da idade, tamanho corporal, deficiência visível ou invisível, etnia, características sexuais, identidade e expressão de gênero, nível de experiência, educação, status socioeconômico, nacionalidade, aparência pessoal, raça, religião ou identidade e orientação sexual.
 
-Examples of behavior that contributes to creating a positive environment
-include:
+Nós nos comprometemos a agir e interagir de maneiras que contribuam para uma comunidade aberta, acolhedora, diversa, inclusiva e saudável.
 
-*   Using welcoming and inclusive language
-*   Being respectful of differing viewpoints and experiences
-*   Gracefully accepting constructive criticism
-*   Focusing on what is best for the community
-*   Showing empathy towards other community members
+## Nossos Padrões
 
-Examples of unacceptable behavior by participants include:
+Exemplos de comportamento que contribuem para um ambiente positivo para nossa comunidade incluem:
 
-*   The use of sexualized language or imagery and unwelcome sexual attention or
-    advances
-*   Trolling, insulting/derogatory comments, and personal or political attacks
-*   Public or private harassment
-*   Publishing others' private information, such as a physical or electronic
-    address, without explicit permission
-*   Other conduct which could reasonably be considered inappropriate in a
-    professional setting
+*   Demonstrar empatia e bondade para com outras pessoas
+*   Respeitar opiniões, pontos de vista e experiências diferentes
+*   Dar e aceitar feedback construtivo com graça
+*   Aceitar a responsabilidade e pedir desculpas àqueles que são afetados por nossos erros, e aprender com a experiência
+*   Focar no que é melhor não apenas para nós como indivíduos, mas para a comunidade em geral
 
-## Our Responsibilities
+Exemplos de comportamento inaceitável incluem:
 
-Project maintainers are responsible for clarifying the standards of acceptable
-behavior and are expected to take appropriate and fair corrective action in
-response to any instances of unacceptable behavior.
+*   O uso de linguagem ou imagens sexualizadas, e atenção ou avanços sexuais de qualquer tipo
+*   Trolling, comentários ofensivos ou depreciativos, e ataques pessoais ou políticos
+*   Assédio público ou privado
+*   Publicar informações privadas de outras pessoas, como um endereço físico ou de e-mail, sem a permissão explícita delas
+*   Outras condutas que poderiam ser razoavelmente consideradas inadequadas em um ambiente profissional
 
-Project maintainers have the right and responsibility to remove, edit, or reject
-comments, commits, code, wiki edits, issues, and other contributions that are
-not aligned to this Code of Conduct, or to ban temporarily or permanently any
-contributor for other behaviors that they deem inappropriate, threatening,
-offensive, or harmful.
+## Responsabilidades de Aplicação
 
-## Scope
+Os mantenedores do projeto são responsáveis por esclarecer e aplicar nossos padrões de comportamento aceitável e tomarão ações corretivas apropriadas e justas em resposta a qualquer comportamento que considerem inadequado, ameaçador, ofensivo ou prejudicial.
 
-This Code of Conduct applies both within project spaces and in public spaces
-when an individual is representing the project or its community. Examples of
-representing a project or community include using an official project e-mail
-address, posting via an official social media account, or acting as an appointed
-representative at an online or offline event. Representation of a project may be
-further defined and clarified by project maintainers.
+Os mantenedores do projeto têm o direito e a responsabilidade de remover, editar ou rejeitar comentários, commits, código, edições de wiki, issues e outras contribuições que não estejam alinhadas com este Código de Conduta, e comunicar as razões para as decisões de moderação.
 
-This Code of Conduct also applies outside the project spaces when the Project
-Steward has a reasonable belief that an individual's behavior may have a
-negative impact on the project or its community.
+## Escopo
 
-## Conflict Resolution
+Este Código de Conduta se aplica a todos os espaços do projeto, e também se aplica quando um indivíduo está representando o projeto ou sua comunidade em espaços públicos.
 
-We do not believe that all conflict is bad; healthy debate and disagreement
-often yield positive results. However, it is never okay to be disrespectful or
-to engage in behavior that violates the project’s code of conduct.
+## Aplicação
 
-If you see someone violating the code of conduct, you are encouraged to address
-the behavior directly with those involved. Many issues can be resolved quickly
-and easily, and this gives people more control over the outcome of their
-dispute. If you are unable to resolve the matter for any reason, or if the
-behavior is threatening or harassing, report it. We are dedicated to providing
-an environment where participants feel welcome and safe.
+Instâncias de comportamento abusivo, assediador ou de outra forma inaceitável podem ser relatadas aos mantenedores do projeto responsáveis pela aplicação em [SEU_EMAIL_DE_CONTATO@exemplo.com] (Substitua pelo seu email de contato).
+Todas as reclamações serão revisadas e investigadas prontamente e de forma justa.
+Todos os mantenedores do projeto são obrigados a respeitar a privacidade e a segurança do relator de qualquer incidente.
 
-Reports should be directed to Leonardo Goncalves (raviapowersync@gmail.com), the
-Project Steward for AigroQuantumSaaS. It is the Project Steward’s duty to
-receive and address reported violations of the code of conduct. They will then
-work with a committee consisting of representatives from the Open Source
-Programs Office and the Google Open Source Strategy team. If for any reason you
-are uncomfortable reaching out to the Project Steward, please email
-opensource@google.com.
+## Diretrizes de Aplicação
 
-We will investigate every complaint, but you may not receive a direct response.
-We will use our discretion in determining when and how to follow up on reported
-incidents, which may range from not taking action to permanent expulsion from
-the project and project-sponsored spaces. We will notify the accused of the
-report and provide them an opportunity to discuss it before any action is taken.
-The identity of the reporter will be omitted from the details of the report
-supplied to the accused. In potentially harmful situations, such as ongoing
-harassment or threats to anyone's safety, we may take action without notice.
+Os mantenedores do projeto seguirão estas Diretrizes de Impacto na Comunidade para determinar as consequências para qualquer ação que considerem violadora deste Código de Conduta:
 
-## Attribution
+### 1. Correção
 
-This Code of Conduct is adapted from the Contributor Covenant, version 1.4,
-available at
-https://www.contributor-covenant.org/version/1/4/code-of-conduct.html
+**Impacto:** Uso de linguagem inadequada ou outro comportamento considerado não profissional ou indesejado no ambiente.
 
-Note: A version of this file is also available in the
-[New Project repo](https://github.com/google/new-project/blob/master/docs/code-of-conduct.md).
+**Consequência:** Um aviso privado por escrito dos mantenedores do projeto, fornecendo clareza sobre a natureza da violação e uma explicação do porquê o comportamento era inadequado. Um pedido de desculpas público pode ser solicitado.
+
+### 2. Aviso
+
+**Impacto:** Uma violação através de um comportamento significativo.
+
+**Consequência:** Um aviso com consequências para o comportamento continuado. Nenhuma interação com as pessoas envolvidas, incluindo interação não solicitada com aqueles que aplicam o Código de Conduta, por um período especificado. Isso inclui evitar interações em espaços da comunidade, bem como canais externos como mídias sociais. A violação desses termos pode levar a uma suspensão temporária ou permanente.
+
+### 3. Suspensão Temporária
+
+**Impacto:** Uma violação grave dos padrões da comunidade, incluindo comportamento inadequado sustentado.
+
+**Consequência:** Uma suspensão temporária de qualquer tipo de interação ou comunicação pública com a comunidade por um período especificado. Nenhuma interação pública ou privada com as pessoas envolvidas, incluindo interação não solicitada com aqueles que aplicam o Código de Conduta, durante este período. A violação desses termos pode levar a uma suspensão permanente.
+
+### 4. Suspensão Permanente
+
+**Impacto:** Demonstrar um padrão de violação dos padrões da comunidade, incluindo comportamento inadequado sustentado, assédio a um indivíduo ou agressão ou depreciação de classes de indivíduos.
+
+**Consequência:** Uma proibição permanente de qualquer tipo de interação pública dentro da comunidade.
+
+## Atribuição
+
+Este Código de Conduta é adaptado do [Contributor Covenant](https://www.contributor-covenant.org/), versão 2.0, disponível em [https://www.contributor-covenant.org/version/2/0/code_of_conduct.html](https://www.contributor-covenant.org/version/2/0/code_of_conduct.html).

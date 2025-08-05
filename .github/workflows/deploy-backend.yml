@@ -1,0 +1,40 @@
+# .github/workflows/deploy-backend.yml
+# Workflow de Deploy Contínuo (CD) para o Backend da plataforma MAHBUB.dev
+
+name: CD - Deploy Backend
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'services/api-gateway/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Login to Docker Hub (if using Docker)
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: services/api-gateway # Caminho para o Dockerfile do seu backend
+          push: true
+          tags: your-docker-username/mahbub-backend:latest # Substitua pelo seu usuário Docker
+
+      - name: Deploy to Railway (Exemplo)
+        # Este é um exemplo. A integração com Railway pode variar.
+        # Geralmente envolve o Railway CLI ou uma integração direta com o GitHub.
+        run: |
+          echo "Simulando deploy para Railway..."
+          # railway deploy --service your-railway-service-id --token ${{ secrets.RAILWAY_TOKEN }}
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
